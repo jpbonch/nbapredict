@@ -2,8 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def scrapestats(url, team):
-    with open('NBA.com_Stats _ Teams Traditional.html', 'r', encoding='utf-8') as f:
+def scrapestats(team, year):
+    file = year + '.html'
+    with open(file, 'r', encoding='utf-8') as f:
         reading = f.read()
 
     soup = BeautifulSoup(reading, 'html.parser')
