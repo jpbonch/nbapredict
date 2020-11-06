@@ -1,12 +1,17 @@
-# 2016 warriors: ((((1*114.8*42.7*49.5*11.9*38.3*17.6*78.8*44*30.1*9.5*6.7)/10)/20 + 11.5 * 10000000)/10**13)*(10/6.46469350606)
 from getstats import scrapestats
 
 team = input('Team: ')
 year = input('Year: ')
 stats = scrapestats(team, year)
 
-offensive = round((((stats['win%'] * stats['pts'] * stats['fgm'] * stats['fg%'] * stats['3pm'] *
-            stats['3p%'] * stats['ftm'] * stats['ft%'] * stats['reb'] * stats['ast'] *
-            stats['stl'] * stats['blk'])/stats['tov']) * (1.3821910597726037 * 10**-13)), 2)
+offensive = round(((stats['pts'] * stats['fgm'] * stats['fg%'] * stats['3pm'] *
+            stats['3p%'] * stats['ftm'] * stats['ft%'] * stats['oreb'] * stats['ast']) * (
+            100/42934758738941.51)), 2)
+
+defensive = round((((stats['dreb'] *
+            stats['stl'] * stats['blk'])/stats['tov']) * (100/142)), 2)
 
 print(offensive)
+print(defensive)
+total = round(offensive + defensive + stats['win%']*10, 2)
+print(total)
