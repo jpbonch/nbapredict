@@ -5,8 +5,8 @@ team = input('Team: ')
 year = input('Year: ')
 stats = scrapestats(team, year)
 
-offensive = round(((stats['win%'] * stats['pts'] * stats['fgm'] * stats['fg%'] * stats['3pm'] *
+offensive = round((((stats['win%'] * stats['pts'] * stats['fgm'] * stats['fg%'] * stats['3pm'] *
             stats['3p%'] * stats['ftm'] * stats['ft%'] * stats['reb'] * stats['ast'] *
-            stats['stl'] * stats['blk'])/stats['tov']) / 10**13, 2) * (100/60.91)
+            stats['stl'] * stats['blk'])/stats['tov']) / 10**13) * (100/60.91), 2)
 
 print(offensive)

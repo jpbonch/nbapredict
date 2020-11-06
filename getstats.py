@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 
 def scrapestats(team, year):
-    file = year + '.html'
+    file = 'data/' + year + '.htm'
     with open(file, 'r', encoding='utf-8') as f:
         reading = f.read()
 
