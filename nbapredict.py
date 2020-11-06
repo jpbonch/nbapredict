@@ -13,5 +13,5 @@ defensive = round((((stats['dreb'] *
 
 print(offensive)
 print(defensive)
-total = round(offensive + defensive + stats['win%']*10, 2)
+total = round((offensive + defensive + stats['win%']*10) * 100/214.7, 2)
 print(total)
