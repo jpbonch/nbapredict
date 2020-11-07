@@ -16,10 +16,14 @@ def scrapestats(team, year):
     for i in range(840):
             rawstats.append(content[i].text.strip('\n').strip(' '))
 
-    for i in range(30):
+    if int(year) >= 1997 and int(year) <= 2004:
+        rawstats = rawstats[:-28]
+    teamlist = [x for x in rawstats if x[0].isalpha()]
+
+    for i in range(len(teamlist)):
         stats.append([None]*28)
 
-    for teamy in range(30):
+    for teamy in range(len(teamlist)):
         for value in range(28):
             stats[teamy][value] = rawstats[0]
             rawstats.pop(0)

@@ -11,7 +11,7 @@ offensive = round(((stats['pts'] * stats['fgm'] * stats['fg%'] * stats['3pm'] *
 defensive = round((((stats['dreb'] *
             stats['stl'] * stats['blk'])/stats['tov']) * (100/142)), 2)
 
-print(offensive)
-print(defensive)
-total = round((offensive + defensive + stats['win%']*10) * 100/214.7, 2)
+print('Offensive rating:', offensive)
+print('Defensive rating:', defensive)
+total = 'Total: ' + str(round((offensive + defensive + stats['win%']*10) * 100/214.7, 2))
 print(total)
