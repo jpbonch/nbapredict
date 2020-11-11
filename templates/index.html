@@ -5,8 +5,8 @@
     <title></title>
   </head>
   <body>
-    <form>
-      <select name="year" id="year" action='/form' onchange="enableteamselector()">
+    <form name='form' action='/form'>
+      <select name="year" id="year" onchange="enableteamselector()">
         <option value="noneselected"></option>
         {% for year in range(1997, 2021) %}
         <option value="{{ year }}">{{ year }}</option>
@@ -14,13 +14,16 @@
       </select>
 
       <select name="team" id="team">
-        {% for year in range(1997, 2021) %}
-        <option value={{ year|string }}>{{ year }}</option>
-        {% endfor %}
       </select>
 
-      <input class="btn" type="submit" value="Search">
+      <input class="btn" name='submit' type="submit" value="Search">
     </form>
+
+    <p>Offensive: {{ offensive }}</p>
+    <p>Defensive: {{ defensive }}</p>
+    <p>Total: {{ total }}</p>
+
+
       <script type="text/javascript">
         teams = ['Atlanta Hawks', 'Boston Celtics', 'Brooklyn Nets', 'Charlotte Hornets',
                 'Chicago Bulls', 'Cleveland Cavaliers', 'Dallas Mavericks', 'Denver Nuggets',
@@ -38,17 +41,47 @@
 
           if (!(selected == 'noneselected')){
             teamselect.disabled = false;
-            if selected <= 2016:
-              teams[teams.index('LA Clippers')] = 'Los Angeles Clippers'
-            if selected <= 2014:
-              teams[teams.index('Charlotte Hornets')] = 'Charlotte Bobcats'
-            if selected <= 2013:
-              teams[teams.index('New Orleans Pelicans')] = 'New Orleans Hornets'
-            if selected <= 2008:
-              teams[teams.index('LA Clippers')]
+            if (selected <= 2016){
+              teams[teams.indexOf('LA Clippers')] = 'Los Angeles Clippers';
             }
-
-
+            if (selected <= 2014){
+              teams[teams.indexOf('Charlotte Hornets')] = 'Charlotte Bobcats';
+            }
+            if (selected <= 2013){
+              teams[teams.indexOf('New Orleans Pelicans')] = 'New Orleans Hornets';
+            }
+            if (selected <= 2012){
+              teams[teams.indexOf('Brooklyn Nets')] = 'New Jersey Nets';
+            }
+            if (selected <= 2008){
+              teams[teams.indexOf('Oklahoma City Thunder')] = 'Seattle SuperSonics';
+            }
+            if (selected <= 2007){
+              teams[teams.indexOf('New Orleans Hornets')] = 'New Orleans/Oklahoma City Hornets';
+            }
+            if (selected <= 2005){
+              teams[teams.indexOf('New Orleans/Oklahoma City Hornets')] = 'New Orleans Hornets';
+            }
+            if (selected <= 2003){
+              teams.splice(teams.indexOf('Charlotte Bobcats'), 1);
+            }
+            if (selected <= 2002){
+              teams[teams.indexOf('New Orleans Hornets')] = 'New Orleans Hornets';
+            }
+            if (selected <= 2001){
+              teams[teams.indexOf('Memphis Grizzlies')] = 'Vancouver Grizzlies';
+            }
+            if (selected == 1997){
+              teams[teams.indexOf('Washington Wizards')] = 'Washington Bullets';
+            }
+            var teamdropdown = document.getElementById('team');
+            for(team of teams){
+              var teamlisting = document.createElement("option");
+              teamlisting.innerHTML = team;
+              teamlisting.value = team;
+              teamdropdown.appendChild(teamlisting);
+            }
+            }
 
       }
       </script>
