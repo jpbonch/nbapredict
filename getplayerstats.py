@@ -29,5 +29,3 @@ def scrapeplayerstats(name):
 
 
     return statsdict
-
-print(scrapeplayerstats("Joel Embiid"))
