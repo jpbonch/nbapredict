@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form>
+      <select name="year" id="year" action='/form' onchange="enableteamselector()">
+        <option value="noneselected"></option>
+        {% for year in range(1997, 2021) %}
+        <option value="{{ year }}">{{ year }}</option>
+        {% endfor %}
+      </select>
+
+      <select name="team" id="team">
+        {% for year in range(1997, 2021) %}
+        <option value={{ year|string }}>{{ year }}</option>
+        {% endfor %}
+      </select>
+
+      <input class="btn" type="submit" value="Search">
+    </form>
+      <script type="text/javascript">
+        teams = ['Atlanta Hawks', 'Boston Celtics', 'Brooklyn Nets', 'Charlotte Hornets',
+                'Chicago Bulls', 'Cleveland Cavaliers', 'Dallas Mavericks', 'Denver Nuggets',
+                'Detroit Pistons', 'Golden State Warriors', 'Houston Rockets', 'Indiana Pacers',
+                'LA Clippers', 'Los Angeles Lakers', 'Memphis Grizzlies', 'Miami Heat',
+                'Milwaukee Bucks', 'Minnesota Timberwolves', 'New Orleans Pelicans',
+                'New York Knicks', 'Oklahoma City Thunder', 'Orlando Magic', 'Philadelphia 76ers',
+                'Phoenix Suns', 'Portland Trail Blazers', 'Sacramento Kings', 'San Antonio Spurs',
+                'Toronto Raptors', 'Utah Jazz', 'Washington Wizards']
+        var teamselect = document.getElementById("team");
+        teamselect.disabled = true;
+        function enableteamselector(){
+          var form = document.getElementById("year");
+          var selected = form.options[form.selectedIndex].text;
+
+          if (!(selected == 'noneselected')){
+            teamselect.disabled = false;
+            if selected <= 2016:
+              teams[teams.index('LA Clippers')] = 'Los Angeles Clippers'
+            if selected <= 2014:
+              teams[teams.index('Charlotte Hornets')] = 'Charlotte Bobcats'
+            if selected <= 2013:
+              teams[teams.index('New Orleans Pelicans')] = 'New Orleans Hornets'
+            if selected <= 2008:
+              teams[teams.index('LA Clippers')]
+            }
+
+
+
+      }
+      </script>
+  </body>
+</html>
