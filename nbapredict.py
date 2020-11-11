@@ -1,8 +1,11 @@
 from getstats import scrapestats
+from getplayerstats import scrapeplayerstats
 
 team = input('Team: ')
 year = input('Year: ')
+name = input('Name: ')
 stats = scrapestats(team, year)
+player_stats = scrapestats(name)
 
 offensive = round(((stats['pts'] * stats['fgm'] * stats['fg%'] * stats['3pm'] *
             stats['3p%'] * stats['ftm'] * stats['ft%'] * stats['oreb'] * stats['ast']) * (
