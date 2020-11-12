@@ -5,7 +5,7 @@
     <title></title>
   </head>
   <body>
-    <form name='form' action='/form'>
+    <form name='teamdata' action='/teamdata'>
       <select name="year" id="year" onchange="enableteamselector()">
         <option value="noneselected"></option>
         {% for year in range(1997, 2021) %}
@@ -19,10 +19,25 @@
       <input class="btn" name='submit' type="submit" value="Search">
     </form>
 
+    <form name='playerdata' action='/playerdata'>
+      <input type='text' name='name' id='name'>
+
+
+      <select name="playeryear" id="playeryear">
+        <option value="none"></option>
+        {% for year in range(1997, 2021) %}
+        <option value="{{ year }}">{{ year }}</option>
+        {% endfor %}
+      </select>
+      <input class="btn" name='submit' type="submit" value="Search">
+    </form>
+
     <p>Offensive: {{ offensive }}</p>
     <p>Defensive: {{ defensive }}</p>
     <p>Total: {{ total }}</p>
 
+
+    {{ playerstats }}
 
       <script type="text/javascript">
         teams = ['Atlanta Hawks', 'Boston Celtics', 'Brooklyn Nets', 'Charlotte Hornets',
