@@ -1,0 +1,24 @@
+.tab {
+    width: 49.89%;
+    display: inline;
+    margin: 0;
+    border: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    outline: none;
+}
+
+*{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
+body{
+  background: darkgray;
+  margin: 0;
+}
+
+
+.tab:hover{
+  background-color: darkgray;
+  cursor: pointer;
+}
