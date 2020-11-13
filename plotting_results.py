@@ -42,7 +42,7 @@ def graphing():
             label = name[2]
 
     
-        paths.append(f'Images/{label}.png')
+        paths.append(f'static/Images/{team}.png')
         offense.append(offensive)
         defense.append(defensive)
 
