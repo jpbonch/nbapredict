@@ -1,24 +1,83 @@
-.tab {
-    width: 49.89%;
+.lefttab {
+    width: 50%;
     display: inline;
     margin: 0;
     border: 0;
     padding-top: 20px;
     padding-bottom: 20px;
     outline: none;
+    background-color: lightgray;
+    padding: 20px;
+    position: fixed;
+    font-weight: 200;
+}
+
+.righttab {
+    width: 50%;
+    display: inline;
+    margin: 0;
+    border: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    outline: none;
+    background-color: lightgray;
+    padding: 20px;
+    position: fixed;
+    right: 0;
+    font-weight: 200;
 }
 
 *{
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
 }
 
 body{
-  background: darkgray;
+  background: #363636;
   margin: 0;
 }
 
+.navbar{
+  width: 100%;
+  height: 60px;
+}
 
-.tab:hover{
-  background-color: darkgray;
+select{
+  background-color: #363636;
+  display: inline;
+}
+
+#teamsubmit{
+  display: none;
+}
+
+#teamtab{
+  margin: 20px;
+}
+
+h3{
+  font-weight: 200;
+  display: inline;
+}
+
+.teamboxtext{
+
+}
+
+.yearboxtext{
+
+}
+
+#team{
+  width: 100px;
+}
+
+.righttab:hover{
+  background-color: #878787;
+  cursor: pointer;
+}
+
+.lefttab:hover{
+  background-color: #878787;
   cursor: pointer;
 }

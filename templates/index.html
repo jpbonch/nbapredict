@@ -5,17 +5,23 @@
   <meta charset="utf-8">
   <title></title>
   <link rel="stylesheet" href="static/main.css">
+
+
 </head>
 
 <body>
-  <button id='teamtabbutton' class='tab' onclick='clickteamtab()'>Team</button>
-  <button id='playertabbutton' class='tab' onclick='clickplayertab()'>Player</button>
 
+  <div class='navbar'>
+    <button id='teamtabbutton' class='lefttab' onclick='clickteamtab()'>TEAM</button>
+  <button id='playertabbutton' class='righttab' onclick='clickplayertab()'>PLAYER</button>
+</div>
 
 
   <div id='teamtab'>
 
   <form name='teamdata' action='/teamdata'>
+    <h3 class='yearboxtext'>YEAR</h3>
+
     <select name="year" id="year" onchange="enableteamselector()">
       <option value="noneselected"></option>
       {% for year in range(1997, 2021) %}
@@ -23,12 +29,16 @@
       {% endfor %}
     </select>
 
-    <select name="team" id="team">
+    <h3 class='teamboxtext'>TEAM</h3>
+    <select name="team" id="team" onchange='onteamselected()'>
+      <option value="none"></option>
     </select>
 
-    <input class="btn" name='submit' type="submit" value="Search">
+    <input class="btn" id='teamsubmit' name='submit' type="submit" value="Search">
   </form>
 
+
+  <img id='teamimage'>
 
   <p>Offensive: {{ offensive }}</p>
   <p>Defensive: {{ defensive }}</p>
@@ -53,92 +63,8 @@
   <p>{{ playerstats }}</p>
 </div>
 
-  <script type="text/javascript">
-    teams = ['Atlanta Hawks', 'Boston Celtics', 'Brooklyn Nets', 'Charlotte Hornets',
-      'Chicago Bulls', 'Cleveland Cavaliers', 'Dallas Mavericks', 'Denver Nuggets',
-      'Detroit Pistons', 'Golden State Warriors', 'Houston Rockets', 'Indiana Pacers',
-      'LA Clippers', 'Los Angeles Lakers', 'Memphis Grizzlies', 'Miami Heat',
-      'Milwaukee Bucks', 'Minnesota Timberwolves', 'New Orleans Pelicans',
-      'New York Knicks', 'Oklahoma City Thunder', 'Orlando Magic', 'Philadelphia 76ers',
-      'Phoenix Suns', 'Portland Trail Blazers', 'Sacramento Kings', 'San Antonio Spurs',
-      'Toronto Raptors', 'Utah Jazz', 'Washington Wizards'
-    ]
-    var teamselect = document.getElementById("team");
-    teamselect.disabled = true;
-    var playertab = document.getElementById('playertab');
-    playertab.style.display = 'none';
-
-    var teamtabbutton = document.getElementById('teamtabbutton');
-    teamtabbutton.style.backgroundColor = 'darkgray';
-    var playertabbutton = document.getElementById('playertabbutton');
-
-    function enableteamselector() {
-      var form = document.getElementById("year");
-      var selected = form.options[form.selectedIndex].text;
-
-      if (!(selected == 'noneselected')) {
-        teamselect.disabled = false;
-        if (selected <= 2016) {
-          teams[teams.indexOf('LA Clippers')] = 'Los Angeles Clippers';
-        }
-        if (selected <= 2014) {
-          teams[teams.indexOf('Charlotte Hornets')] = 'Charlotte Bobcats';
-        }
-        if (selected <= 2013) {
-          teams[teams.indexOf('New Orleans Pelicans')] = 'New Orleans Hornets';
-        }
-        if (selected <= 2012) {
-          teams[teams.indexOf('Brooklyn Nets')] = 'New Jersey Nets';
-        }
-        if (selected <= 2008) {
-          teams[teams.indexOf('Oklahoma City Thunder')] = 'Seattle SuperSonics';
-        }
-        if (selected <= 2007) {
-          teams[teams.indexOf('New Orleans Hornets')] = 'New Orleans/Oklahoma City Hornets';
-        }
-        if (selected <= 2005) {
-          teams[teams.indexOf('New Orleans/Oklahoma City Hornets')] = 'New Orleans Hornets';
-        }
-        if (selected <= 2003) {
-          teams.splice(teams.indexOf('Charlotte Bobcats'), 1);
-        }
-        if (selected <= 2002) {
-          teams[teams.indexOf('New Orleans Hornets')] = 'New Orleans Hornets';
-        }
-        if (selected <= 2001) {
-          teams[teams.indexOf('Memphis Grizzlies')] = 'Vancouver Grizzlies';
-        }
-        if (selected == 1997) {
-          teams[teams.indexOf('Washington Wizards')] = 'Washington Bullets';
-        }
-        var teamdropdown = document.getElementById('team');
-        for (team of teams) {
-          var teamlisting = document.createElement("option");
-          teamlisting.innerHTML = team;
-          teamlisting.value = team;
-          teamdropdown.appendChild(teamlisting);
-        }
-      }
-    }
-
-    function clickteamtab(){
-      var playertab = document.getElementById('playertab');
-      playertab.style.display = 'none';
-      var teamtab = document.getElementById('teamtab');
-      teamtab.style.display = 'block';
-      teamtabbutton.style.backgroundColor = 'darkgray';
-      playertabbutton.style.backgroundColor = 'rgb(239, 239, 239)';
-    }
-
-    function clickplayertab(){
-      var playertab = document.getElementById('playertab');
-      playertab.style.display = 'block';
-      var teamtab = document.getElementById('teamtab');
-      teamtab.style.display = 'none';
-      teamtabbutton.style.backgroundColor = 'rgb(239, 239, 239)';
-      playertabbutton.style.backgroundColor = 'darkgray';
-    }
-  </script>
+<script src="static/teamseveryyear.json"></script>
+<script src='static/main.js'></script>
 </body>
 
 </html>
