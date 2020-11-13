@@ -89,8 +89,4 @@ function onteamselected(){
   submitbutton.click();
   var form = document.getElementById("team");
   var selected = form.options[form.selectedIndex].text;
-  var lastpart = selected.split(" ")[1];
-  var teamimage = document.getElementById('teamimage');
-  teamimage.src = 'Images/' + lastpart + '.png'
-
 }

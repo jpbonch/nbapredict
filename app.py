@@ -27,7 +27,9 @@ def form():
 
     total = round((offensive + defensive + stats['win%']*10) * 100/208.17, 2)
 
-    return render_template('index.html', offensive=offensive, defensive=defensive, total=total)
+    imghtml = '<img src="static/Images/'+team+'.png">'
+
+    return render_template('index.html', offensive=offensive, defensive=defensive, total=total, imghtml=imghtml)
 
 @app.route('/playerdata')
 def playerdata():
