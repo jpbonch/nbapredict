@@ -17,7 +17,7 @@ def plot(x, y):
     soup = BeautifulSoup(reading, 'html.parser')
     content = soup.html.select("td", {'target' : '_blank'})
 
-    for i in range(1, 50):
+    for i in range(1, 20):
         players.append(content[(30 *(i-1)) + 1].text.strip('\n'))
 
     for name in players:
@@ -34,6 +34,7 @@ def plot(x, y):
     plt.ylim(ymin=min(y_list)-0.5, ymax=max(y_list)+0.5)       
     plt.ylabel(y)
     plt.xlabel(x)
+    plt.title(f"{year} : {x} against {y}")
     mplcursors.cursor(hover=True).connect(
         "add", lambda sel: sel.annotation.set_text(labels[sel.target.index] + f" {x}: {x_list[sel.target.index]} " + f"{y}: {y_list[sel.target.index]}"))
 
@@ -42,4 +43,4 @@ def plot(x, y):
 
  
 
-plot("Age", "Points")
+plot("Points", "Rebounds")
