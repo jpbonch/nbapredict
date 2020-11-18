@@ -19,9 +19,9 @@ def scrapeplayerstats(name, year):
                 lst.append(content[(30 *(i-1)) + j].text.strip('\n').strip(' '))
 
 
-    stats = ['rank', 'name', 'team', 'age', 'gp', 'w', 'l','min', 'pts', 'fgm', 'fga',
+    stats = ['rank', 'name', 'team', 'age', 'gp', 'w', 'l','min', 'points', 'fgm', 'fga',
                     'fg%', '3pm', '3pa', '3p%', 'ftm', 'fta', 'ft%', 'oreb', 'dreb',
-                    'reb', 'ast', 'tov', 'stl', 'blk', 'pf', 'fp', 'dd2', 'td3', '+/-']
+                    'rebounds', 'assists', 'turnovers', 'steals', 'blocks', 'pf', 'fp', 'dd2', 'td3', '+/-']
 
     statsdict = {}
 
