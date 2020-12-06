@@ -17,7 +17,7 @@ def plot(x, y):
     soup = BeautifulSoup(reading, 'html.parser')
     content = soup.html.select("td", {'target' : '_blank'})
 
-    for i in range(1, 20):
+    for i in range(1, 50):
         players.append(content[(30 *(i-1)) + 1].text.strip('\n'))
 
     for name in players:
